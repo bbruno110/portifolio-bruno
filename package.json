@@ -1,26 +1,29 @@
 {
-  "name": "bruno-portifolio",
-  "version": "0.1.0",
+  "name": "portfolio-bruno",
+  "version": "1.0.0",
   "private": true,
+  "description": "Portfólio minimalista em Next.js, TypeScript e Tailwind CSS, preparado para estudo.",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "next start --hostname 0.0.0.0",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=22.0.0"
   },
   "dependencies": {
+    "@bruno-oliveira/contour-tide": "file:bruno-oliveira-contour-tide-0.4.0.tgz",
     "next": "16.4.5",
-    "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
-    "@tailwindcss/turbopack": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.4.5",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "@tailwindcss/postcss": "4.3.4",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tailwindcss": "4.3.4",
+    "typescript": "7.0.2"
   }
 }
