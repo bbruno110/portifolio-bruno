@@ -20,11 +20,200 @@ body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-inter), sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-::selection {
-  background: var(--color-accent);
-  color: var(--color-background);
+input,
+textarea,
+[contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.viewport-page {
+  padding-block: clamp(0.75rem, 3svh, 2rem);
+}
+
+.about-intro {
+  max-width: 40rem;
+  margin-top: 1rem;
+}
+
+.about-intro p + p {
+  margin-top: 0.75rem;
+}
+
+.about-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  margin-top: clamp(1rem, 4svh, 2.5rem);
+}
+
+@media (max-width: 767px), (max-height: 740px) {
+  .project-grid {
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .project-grid article {
+    min-width: 0;
+    padding: 0.75rem;
+  }
+
+  .project-grid h2 {
+    font-size: 1rem;
+  }
+
+  .project-grid p {
+    margin-top: 0.5rem;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
+  .project-grid ul {
+    gap: 0.25rem 0.5rem;
+    padding-top: 0.75rem;
+    font-size: 0.6875rem;
+    line-height: 1.4;
+  }
+
+  .project-grid li {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 740px) {
+  .projects-page {
+    padding-block: 0.75rem;
+  }
+
+  .projects-page > div {
+    padding-inline: 1rem;
+  }
+
+  .projects-page > div > p {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .project-grid article {
+    padding: 0.625rem;
+  }
+
+  .project-grid h2 {
+    font-size: 0.875rem;
+  }
+
+  .project-grid p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .project-grid ul {
+    column-gap: 0.375rem;
+    padding-top: 0.5rem;
+  }
+
+  .project-grid li span {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-intro {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .about-details {
+    gap: 0.75rem;
+  }
+
+  .about-details ul {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
+  .about-details .education-title {
+    font-size: 1.125rem;
+  }
+
+  .about-details .resume-link {
+    gap: 0.375rem;
+    padding-inline: 0.625rem;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-height: 740px) {
+  body:has(.viewport-page) .site-header-bar {
+    height: 4rem;
+  }
+
+  body:has(.viewport-page) .site-footer-content {
+    gap: 0;
+    padding-block: 0.5rem;
+  }
+
+  .about-details {
+    margin-top: 1rem;
+  }
+
+  .about-details ul,
+  .about-details .education-title {
+    margin-top: 0.5rem;
+  }
+
+  .about-details .resume-link {
+    margin-top: 0.75rem;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 600px) {
+  body:has(.viewport-page) .site-header-bar {
+    height: 3.5rem;
+  }
+
+  .about-page h1 {
+    font-size: 1.75rem;
+  }
+
+  .about-page {
+    padding-block: 0.5rem;
+  }
+
+  .about-intro {
+    margin-top: 0.5rem;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
+  .about-intro p + p {
+    margin-top: 0.5rem;
+  }
+
+  .about-details .education-title {
+    font-size: 1rem;
+  }
+
+  .about-details {
+    margin-top: 0.75rem;
+  }
+
+  .about-details li + li {
+    margin-top: 0.25rem;
+  }
+
+  .about-details .education-detail {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
 }
 
 /* O foco continua visível em todos os links e botões, inclusive no menu. */

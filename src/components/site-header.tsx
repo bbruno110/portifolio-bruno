@@ -44,7 +44,7 @@ export function SiteHeader() {
   return (
     <header ref={headerRef} className="relative z-20 shrink-0">
       <Container>
-        <div className="flex h-20 items-center justify-between border-b border-line md:h-24">
+        <div className="site-header-bar flex h-20 items-center justify-between border-b border-line md:h-24">
           <Link
             href="/"
             aria-label="Bruno — página inicial"

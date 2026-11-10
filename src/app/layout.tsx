@@ -7,7 +7,6 @@ import { portfolio } from "@/data/portfolio";
 import { Background } from "@/components/background";
 import "./globals.css";
 
-// Fontes incluídas no projeto: o build não precisa consultar Google Fonts.
 const inter = localFont({
   src: "./fonts/inter-latin-variable.woff2",
   variable: "--font-inter",
@@ -37,32 +36,43 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="pt-BR" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="relative isolate flex min-h-svh flex-col antialiased">
         <Background
-          colors={["#6e6e80", "#ffffff"]}
+          renderer="auto"
+          color="#b6ff3b"
+          secondaryColor="#e6ffc5"
           backgroundColor="#0a0a0a"
+          opacity={0.6}
 
-          waveHeight={1}
-          wavelength={1}
+          waveHeight={1.65}
+          wavelength={0.85}
           choppiness={0.8}
-          speed={1}
-          windAngle={0}
+          speed={0.7}
+          windAngle={0.65}
+          noiseStrength={1.65}
+          noiseScale={0.28}
 
-          horizon={0.1}
-          fog={1}
-          glow={0.7}
-          foam={1}
+          fog={0.18}
+          cameraTilt={0.26}
 
           interactive={true}
-          eventSource="window"
-          parallax={1}
+          parallax={0.1}
           swell={1}
-          swellRadius={0.9}
-          clickRipples={true}
+          swellRadius={8}
+          clickRipples={false}
 
           density={1}
-          particleSize={1}
+          particleSize={2.8}
           adaptiveQuality={true}
-          maxFps={30}
+          maxFps={120}
           dpr={1.5}
+
+          mobileOptions={{
+            density: 0.75,
+            particleSize: 3.2,
+            cameraHeight: 3.5,
+            cameraTilt: 0.32,
+            perspective: 60,
+            dpr: 1,
+          }}
         />
 
         <a

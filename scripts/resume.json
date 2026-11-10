@@ -1,0 +1,154 @@
+{
+  "personal": {
+    "name": "BRUNO OLIVEIRA SANTOS",
+    "headline": "Desenvolvedor Full Stack / Back-end | Node.js | TypeScript | React | Oracle PL/SQL",
+    "location": "Vitória da Conquista - BA",
+    "phone": "(77) 99922-4379",
+    "email": "bruno.os230@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/bruno-oliveira-santos-333b791b1/",
+    "github": "https://github.com/bbruno110"
+  },
+  "summary": "Desenvolvedor de Software com mais de 5 anos de experiência em aplicações web e mobile, APIs REST e integrações entre sistemas corporativos. Atuação com Node.js, TypeScript, React, Next.js, React Native e Python, além de Oracle SQL/PLSQL, PostgreSQL e SQL Server.\n\nExperiência em ambiente hospitalar, desenvolvendo soluções para processos financeiros, fiscais, contábeis e operacionais, com integração entre ERP Tasy/Philips, TOTVS e plataformas externas. Entre as entregas estão um serviço de emissão e integração de NFS-e, um aplicativo de Ordens de Serviço e um painel interno para RH, contabilidade e financeiro. Atuação desde a análise de requisitos até o desenvolvimento, integração e manutenção das aplicações.",
+  "skills": [
+    {
+      "category": "Back-end",
+      "items": [
+        "Node.js",
+        "TypeScript",
+        "JavaScript",
+        "Python",
+        "FastAPI",
+        "Flask"
+      ]
+    },
+    {
+      "category": "Front-end e Mobile",
+      "items": [
+        "React.js",
+        "Next.js",
+        "React Native",
+        "Expo",
+        "Vite",
+        "HTML5",
+        "CSS3"
+      ]
+    },
+    {
+      "category": "Bancos de Dados",
+      "items": [
+        "Oracle SQL",
+        "Oracle PL/SQL",
+        "PostgreSQL",
+        "SQL Server",
+        "MongoDB",
+        "procedures",
+        "functions",
+        "triggers",
+        "views"
+      ]
+    },
+    {
+      "category": "APIs e Integrações",
+      "items": [
+        "APIs REST",
+        "JWT",
+        "XML",
+        "NFS-e",
+        "ERP Tasy/Philips",
+        "TOTVS",
+        "integração de sistemas",
+        "automação de processos"
+      ]
+    },
+    {
+      "category": "Ferramentas e Cloud",
+      "items": [
+        "Git",
+        "GitHub",
+        "Docker",
+        "Postman",
+        "Insomnia",
+        "AWS S3",
+        "Elastic Beanstalk",
+        "Vercel",
+        "Heroku",
+        "CI/CD básico"
+      ]
+    },
+    {
+      "category": "IA e Visão Computacional",
+      "items": [
+        "Machine Learning",
+        "YOLOv4",
+        "YOLOv8",
+        "processamento de imagens"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Hospital Samur",
+      "location": "Vitória da Conquista - BA",
+      "role": "Desenvolvedor Full Stack / Desenvolvedor de Sistemas",
+      "period": "Setembro de 2021 - Atual",
+      "bullets": [
+        "Desenvolvi serviço em Node.js e TypeScript para emissão e integração de NFS-e com o ambiente da prefeitura, incluindo processamento de dados fiscais.",
+        "Implementei rotinas de integração entre TOTVS e ERP Tasy/Philips para processos de RH, financeiro e contabilidade, com validação de dados e tratamento de inconsistências.",
+        "Desenvolvi aplicativo de Ordens de Serviço em React Native e Expo, integrado ao Tasy/Philips, para consulta, acompanhamento e atualização de solicitações.",
+        "Desenvolvi painel em Next.js para centralizar consultas e apoiar processos internos de RH, contabilidade e financeiro.",
+        "Desenvolvo e otimizo consultas, relatórios, procedures, functions, triggers e views em Oracle SQL/PLSQL para processos financeiros, contábeis e operacionais.",
+        "Atuo na análise de requisitos, implementação de regras de negócio e manutenção de aplicações web e mobile com Node.js, TypeScript, React, React Native, Python e FastAPI.",
+        "Parametrizo e customizo módulos do Tasy/Philips e apoio usuários na análise e resolução de falhas. Utilizo Git/GitHub para versionamento, Postman e Insomnia para testes de APIs e Docker na organização de ambientes de desenvolvimento."
+      ]
+    },
+    {
+      "company": "Hospital Samur",
+      "location": "Vitória da Conquista - BA",
+      "role": "Técnico de Hardware e Informática",
+      "period": "Setembro de 2019 - Agosto de 2021",
+      "bullets": [
+        "Realizei suporte técnico a usuários, diagnóstico de falhas e manutenção preventiva e corretiva de equipamentos de informática.",
+        "Apoiei a operação do parque tecnológico e o atendimento de demandas internas em ambiente hospitalar."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Aplicativo de Ordens de Serviço",
+      "description": "Aplicativo mobile em React Native e Expo para consulta, acompanhamento e atualização de Ordens de Serviço, com integração ao ERP Tasy/Philips."
+    },
+    {
+      "name": "Integração de NFS-e",
+      "description": "Serviço em Node.js e TypeScript para integração fiscal entre o sistema interno e o ambiente da prefeitura, com processamento de dados para emissão de NFS-e."
+    },
+    {
+      "name": "Integração TOTVS e Tasy",
+      "description": "Rotinas de integração entre TOTVS e ERP Tasy/Philips para processos de RH, financeiro e contabilidade, com validação de dados e tratamento de inconsistências."
+    },
+    {
+      "name": "Visão Computacional com YOLO",
+      "description": "Projeto de visão computacional com Python, YOLOv4 e YOLOv8 para treinamento de modelos e análise de imagens em iniciativa de inovação."
+    }
+  ],
+  "education": [
+    {
+      "course": "Bacharelado em Sistemas de Informação",
+      "institution": "UNIFTC",
+      "period": "Concluído em 2026"
+    },
+    {
+      "course": "Técnico em Eletrotécnica",
+      "institution": "SENAI",
+      "period": "2017 - 2019"
+    }
+  ],
+  "certifications": [
+    "TypeScript - B7Web - 5 horas - 2026",
+    "React Intermediário - B7Web - 12 horas - 2026",
+    "Curso AI-900: Fundamentos de IA no Azure - Escola Virtual - 16 horas - 2026",
+    "Inteligência Artificial e o Novo Contexto da Cultura Digital - Escola Virtual - 20 horas - 2026",
+    "Node.js - B7Web - 66 horas - 2022",
+    "Bancos de Dados - B7Web - 20 horas - 2022",
+    "Git e GitHub - B7Web - 20 horas - 2022"
+  ]
+}

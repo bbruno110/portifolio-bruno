@@ -8,3 +8,11 @@ dist/
 .DS_Store
 coverage/
 *.log
+.vercel/
+/output/
+/tmp/
+__pycache__/
+*.py[cod]
+.venv/
+Thumbs.db
+Desktop.ini

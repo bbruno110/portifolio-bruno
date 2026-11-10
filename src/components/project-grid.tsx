@@ -14,7 +14,7 @@ export function ProjectGrid({
   );
 
   return (
-    <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div className="project-grid mt-4 grid grid-cols-2 gap-3 md:mt-6 md:gap-4">
       {projects.map((project) => (
         <div
           key={project.id}

@@ -11,7 +11,7 @@ export function SiteFooter() {
   return (
     <footer className="shrink-0">
       <Container>
-        <div className="flex flex-col items-center justify-between gap-2 border-t border-line py-6 text-sm md:flex-row md:gap-6">
+        <div className="site-footer-content flex flex-col items-center justify-between gap-2 border-t border-line py-6 text-sm md:flex-row md:gap-6">
           <small className="order-2 text-center text-sm text-muted md:order-1 md:text-left">
             © {portfolio.copyrightYear} {portfolio.name}
           </small>

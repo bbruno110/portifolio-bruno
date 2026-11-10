@@ -11,18 +11,18 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <section className="py-6 md:py-8">
+    <section className="viewport-page about-page flex items-center">
       <Container>
         <div className="max-w-4xl">
           <PageHeading title="Sobre" />
 
-          <div className="mt-4 space-y-3 text-base leading-relaxed text-muted md:text-lg">
+          <div className="about-intro text-base leading-relaxed text-muted md:text-lg">
             {portfolio.about.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-8 md:mt-10 md:grid-cols-2 md:gap-12">
+          <div className="about-details">
             <section aria-labelledby="technologies-title">
               <h2
                 id="technologies-title"
@@ -48,11 +48,11 @@ export default function AboutPage() {
                 Formação
               </h2>
 
-              <p className="mt-3 font-heading text-xl leading-tight font-semibold tracking-tight md:text-[22px]">
+              <p className="education-title mt-3 font-heading text-xl leading-tight font-semibold tracking-tight md:text-[22px]">
                 {portfolio.education.title}
               </p>
 
-              <p className="mt-2 text-sm leading-relaxed text-muted md:text-base">
+              <p className="education-detail mt-2 text-sm leading-relaxed text-muted md:text-base">
                 {portfolio.education.detail}
               </p>
 
@@ -60,7 +60,7 @@ export default function AboutPage() {
                 href={portfolio.resume}
                 download="curriculo-bruno-oliveira-santos.pdf"
                 className="
-                  mt-5 inline-flex min-h-11 items-center
+                  resume-link mt-5 inline-flex min-h-11 items-center
                   justify-center gap-3 rounded
                   border border-foreground px-5 py-2.5
                   text-sm font-semibold transition-colors
