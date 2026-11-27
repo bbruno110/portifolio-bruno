@@ -1,8 +1,8 @@
 
 export const portfolio = {
   name: "Bruno Oliveira Santos",
-  role: "Full Stack / Back-end",
-  tagline: "Aplicações web, mobile e integrações.",
+  role: "Back-end / Full Stack",
+  tagline: "Sistemas corporativos, APIs e integrações.",
   email: "bruno.os230@gmail.com",
   github: "https://github.com/bbruno110",
   githubUsername: "@bbruno110",
@@ -10,18 +10,25 @@ export const portfolio = {
   resume: "/curriculo-bruno.pdf",
   copyrightYear: 2026,
   about: [
-    "Sou Bruno, desenvolvedor Full Stack / Back-end com mais de 5 anos de experiência em aplicações web e mobile, APIs REST e integrações entre sistemas corporativos.",
-    "Atuo da análise de requisitos à implementação e manutenção de soluções para processos financeiros, fiscais, contábeis e operacionais, com foco em dados e automação.",
+    "Sou Bruno, desenvolvedor Back-end e Full Stack com mais de 5 anos criando sistemas e integrações no Hospital Samur.",
+    "Desenvolvo soluções fiscais, financeiras, contábeis e de RH, da análise de requisitos à manutenção.",
   ],
   technologyGroups: [
-    ["Node.js", "TypeScript", "Python", "FastAPI"],
+    ["Node.js", "Express", "TypeScript", "Python", "FastAPI", "Flask"],
     ["React", "Next.js", "React Native", "Expo"],
     ["Oracle SQL/PLSQL", "PostgreSQL", "SQL Server"],
   ],
-  education: {
-    title: "Sistemas de Informação",
-    detail: "Bacharelado · UNIFTC · 2026",
-  },
+  education: [
+    {
+      title: "Sistemas de Informação",
+      detail: "Bacharelado · UNIFTC · 2026",
+    },
+    {
+      title: "Eletrotécnica",
+      detail: "Técnico · SENAI · 2017–2019",
+    },
+  ],
+  languages: "Inglês intermediário",
 } as const;
 
 export const navigation = [
@@ -43,8 +50,8 @@ export const projects = [
     id: "nfse",
     title: "Integração de NFS-e",
     description:
-      "Serviço em Node.js e TypeScript para emissão de NFS-e e integração fiscal com o ambiente da prefeitura.",
-    technologies: ["Node.js", "TypeScript"],
+      "Serviço desenvolvido individualmente: consulta contas no Oracle/Tasy, controla dados em PostgreSQL e processa XML pela API da prefeitura. Quase 10 mil notas processadas em volume acumulado aproximado.",
+    technologies: ["Node.js", "Express", "TypeScript", "Oracle", "PostgreSQL"],
   },
   {
     id: "ordens-de-servico",
@@ -57,14 +64,42 @@ export const projects = [
     id: "totvs-tasy",
     title: "TOTVS + Tasy",
     description:
-      "Integração de processos de RH, financeiro e contabilidade, com validação de dados e tratamento de inconsistências.",
-    technologies: ["Oracle PL/SQL", "TOTVS", "Tasy/Philips"],
+      "Integrações TOTVS/SQL Server e Tasy/Oracle para RH, financeiro e contabilidade, incluindo folha e encargos. Controle dos fluxos com XLSX, pastas e logs para verificar registros já processados.",
+    technologies: ["SQL Server", "Oracle PL/SQL", "TOTVS", "Tasy/Philips"],
+  },
+  {
+    id: "automacoes-bancarias",
+    title: "Automações bancárias",
+    description:
+      "Procedure para gerar arquivo CNAB de apoio a pagamentos PIX Santander e ajuste de rotina Itaú para alterar automaticamente tipos de pagamento.",
+    technologies: ["Oracle PL/SQL", "CNAB", "PIX"],
+  },
+  {
+    id: "painel-interno",
+    title: "Painel de consultas internas",
+    description:
+      "Painel em Next.js para consultas de RH, contabilidade e financeiro no Hospital Samur.",
+    technologies: ["Next.js", "React"],
+  },
+  {
+    id: "portal-notas-fiscais",
+    title: "Portal de notas fiscais",
+    description:
+      "Portal de notas fiscais de médicos e empresas, em produção em fase de testes. A integração posterior com o Oracle/Tasy está planejada.",
+    technologies: ["Python", "FastAPI", "PostgreSQL"],
+  },
+  {
+    id: "reconhecimento-facial",
+    title: "Reconhecimento facial",
+    description:
+      "Projeto pessoal: API em Python que salva imagens e realiza reconhecimento facial para um fluxo de liberação de acesso.",
+    technologies: ["Python", "Reconhecimento facial"],
   },
   {
     id: "visao-computacional",
-    title: "Visão computacional com YOLO",
+    title: "Detecção de objetos com YOLO",
     description:
-      "Treinamento de modelos e processamento de imagens com Python, YOLOv4 e YOLOv8 em iniciativa de inovação.",
+      "Projeto acadêmico: montagem de dataset de imagens e treinamento de modelo YOLO para detecção de objetos.",
     technologies: ["Python", "YOLOv4", "YOLOv8"],
   },
 ] as const satisfies readonly Project[];

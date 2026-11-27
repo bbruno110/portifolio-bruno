@@ -23,10 +23,10 @@ const spaceGrotesk = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: `${portfolio.name} | Full Stack / Back-end`,
+    default: `${portfolio.name} | ${portfolio.role}`,
     template: `%s | ${portfolio.name}`,
   },
-  description: "Portfólio de Bruno Oliveira Santos. Aplicações web, mobile e integrações com Node.js, TypeScript, React, Python e Oracle PL/SQL.",
+  description: "Portfólio de Bruno Oliveira Santos. Desenvolvedor Back-end e Full Stack com foco em Node.js, Express, TypeScript, React, Oracle PL/SQL e integrações corporativas.",
   applicationName: "Bruno — Portfólio",
   authors: [{ name: portfolio.name }],
 };

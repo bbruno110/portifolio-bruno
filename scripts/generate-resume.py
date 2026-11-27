@@ -18,8 +18,6 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
-    KeepTogether,
-    PageBreak,
     Paragraph,
     SimpleDocTemplate,
 )
@@ -53,30 +51,30 @@ def generate(output: Path) -> None:
     data = json.loads((ROOT / "scripts/resume.json").read_text(encoding="utf-8-sig"))
     regular, bold = register_fonts()
     styles = {
-        "name": ParagraphStyle("name", fontName=bold, fontSize=20, leading=25,
-                               textColor=colors.HexColor("#09090b"), spaceAfter=5),
-        "headline": ParagraphStyle("headline", fontName=bold, fontSize=9, leading=13,
-                                   textColor=GREEN, spaceAfter=10),
-        "contact": ParagraphStyle("contact", fontName=regular, fontSize=8.5, leading=13,
+        "name": ParagraphStyle("name", fontName=bold, fontSize=18, leading=21,
+                               textColor=colors.HexColor("#09090b"), spaceAfter=3),
+        "headline": ParagraphStyle("headline", fontName=bold, fontSize=9, leading=11,
+                                   textColor=GREEN, spaceAfter=5),
+        "contact": ParagraphStyle("contact", fontName=regular, fontSize=8, leading=10,
                                   textColor=MUTED),
-        "section": ParagraphStyle("section", fontName=bold, fontSize=9, leading=13,
-                                  textColor=GREEN, spaceBefore=17, spaceAfter=9,
+        "section": ParagraphStyle("section", fontName=bold, fontSize=9, leading=11,
+                                  textColor=GREEN, spaceBefore=7, spaceAfter=4,
                                   keepWithNext=True),
-        "body": ParagraphStyle("body", fontName=regular, fontSize=9.5, leading=14,
-                               textColor=INK, spaceAfter=7),
-        "skill": ParagraphStyle("skill", fontName=regular, fontSize=9, leading=13,
-                                textColor=INK, spaceAfter=4),
-        "title": ParagraphStyle("title", fontName=bold, fontSize=9.5, leading=14,
-                                textColor=INK, spaceAfter=2, keepWithNext=True),
-        "meta": ParagraphStyle("meta", fontName=regular, fontSize=8.5, leading=12,
-                               textColor=MUTED, spaceAfter=6, keepWithNext=True),
-        "bullet": ParagraphStyle("bullet", fontName=regular, fontSize=9, leading=13,
+        "body": ParagraphStyle("body", fontName=regular, fontSize=8.7, leading=10.5,
+                               textColor=INK, spaceAfter=2),
+        "skill": ParagraphStyle("skill", fontName=regular, fontSize=8.4, leading=10.2,
+                                textColor=INK, spaceAfter=1.5),
+        "title": ParagraphStyle("title", fontName=bold, fontSize=9, leading=11,
+                                textColor=INK, spaceAfter=1, keepWithNext=True),
+        "meta": ParagraphStyle("meta", fontName=regular, fontSize=8, leading=10,
+                               textColor=MUTED, spaceAfter=3, keepWithNext=True),
+        "bullet": ParagraphStyle("bullet", fontName=regular, fontSize=8.5, leading=10.2,
                                  textColor=INK, leftIndent=9, firstLineIndent=-9,
-                                 spaceAfter=4),
-        "project": ParagraphStyle("project", fontName=regular, fontSize=9, leading=13,
-                                  textColor=INK, spaceAfter=9),
-        "course": ParagraphStyle("course", fontName=regular, fontSize=9, leading=13,
-                                 textColor=INK, spaceAfter=4),
+                                 spaceAfter=1.5),
+        "project": ParagraphStyle("project", fontName=regular, fontSize=8.5, leading=10.2,
+                                  textColor=INK, spaceAfter=3),
+        "course": ParagraphStyle("course", fontName=regular, fontSize=8.3, leading=10,
+                                 textColor=INK, spaceAfter=1),
     }
 
     def para(text: str, kind: str = "body") -> Paragraph:
@@ -85,12 +83,12 @@ def generate(output: Path) -> None:
     def section(title: str) -> Paragraph:
         return para(title, "section")
 
-    def experience(job: dict) -> KeepTogether:
-        return KeepTogether([
+    def experience(job: dict) -> list:
+        return [
             para(f"{job['company']} - {job['role']}", "title"),
             para(f"{job['location']} | {job['period']}", "meta"),
             *[para(f"- {item}", "bullet") for item in job["bullets"]],
-        ])
+        ]
 
     person = data["personal"]
     story = [para(person["name"], "name"), para(person["headline"], "headline")]
@@ -102,9 +100,20 @@ def generate(output: Path) -> None:
     github = person["github"].removeprefix("https://")
     linkedin = person["linkedin"].removeprefix("https://www.").rstrip("/")
     story.extend([
-        Paragraph(f'<link href="{escape(person["github"], quote=True)}">{escape(github)}</link>', styles["contact"]),
-        Paragraph(f'<link href="{escape(person["linkedin"], quote=True)}">{escape(linkedin)}</link>', styles["contact"]),
-        section("PERFIL"),
+        Paragraph(
+            f'<link href="{escape(person["github"], quote=True)}">{escape(github)}</link> | '
+            f'<link href="{escape(person["linkedin"], quote=True)}">{escape(linkedin)}</link>',
+            styles["contact"],
+        ),
+    ])
+    if person.get("portfolio"):
+        portfolio = person["portfolio"]
+        story.append(Paragraph(
+            f'<link href="{escape(portfolio, quote=True)}">{escape(portfolio.removeprefix("https://").rstrip("/"))}</link>',
+            styles["contact"],
+        ))
+    story.extend([
+        section("RESUMO PROFISSIONAL"),
         *[para(part) for part in data["summary"].split("\n\n")],
         section("TECNOLOGIAS"),
     ])
@@ -115,25 +124,27 @@ def generate(output: Path) -> None:
         ))
     story.extend([
         section("EXPERIÊNCIA PROFISSIONAL"),
-        experience(data["experience"][0]),
-        PageBreak(),
-        section("EXPERIÊNCIA PROFISSIONAL (CONTINUAÇÃO)"),
-        *[experience(job) for job in data["experience"][1:]],
-        section("PROJETOS SELECIONADOS"),
     ])
+    for job in data["experience"]:
+        story.extend(experience(job))
+    story.append(section("PROJETOS RELEVANTES"))
     for project in data["projects"]:
-        story.append(KeepTogether([
-            para(project["name"], "title"),
-            para(project["description"], "project"),
-        ]))
+        story.append(Paragraph(
+            f'<b>{escape(project["name"])}:</b> {escape(project["description"])}',
+            styles["project"],
+        ))
     story.append(section("FORMAÇÃO"))
     for education in data["education"]:
-        story.append(KeepTogether([
-            para(education["course"], "title"),
-            para(f"{education['institution']} - {education['period']}", "body"),
-        ]))
+        story.append(Paragraph(
+            f'<b>{escape(education["course"])}:</b> '
+            f'{escape(education["institution"])} - {escape(education["period"])}',
+            styles["body"],
+        ))
     story.append(section("CURSOS E CERTIFICAÇÕES"))
     story.extend(para(f"- {course}", "course") for course in data["certifications"])
+    if data.get("languages"):
+        story.append(section("IDIOMAS"))
+        story.extend(para(language) for language in data["languages"])
 
     def page_decoration(canvas, doc) -> None:
         width, height = A4
@@ -147,20 +158,20 @@ def generate(output: Path) -> None:
             canvas.drawString(50, height - 35, "BRUNO OLIVEIRA SANTOS")
             canvas.setFont(regular, 8)
             canvas.setFillColor(MUTED)
-            canvas.drawRightString(width - 50, height - 35, "Full Stack / Back-end")
+            canvas.drawRightString(width - 50, height - 35, "Back-end / Full Stack")
         canvas.setStrokeColor(colors.HexColor("#d4d4d8"))
         canvas.setLineWidth(0.6)
-        canvas.line(44, 41, width - 44, 41)
+        canvas.line(44, 29, width - 44, 29)
         canvas.setFillColor(colors.HexColor("#71717a"))
         canvas.setFont(regular, 8)
-        canvas.drawString(44, 28, "Bruno Oliveira Santos | Currículo profissional")
-        canvas.drawRightString(width - 44, 28, str(doc.page))
+        canvas.drawString(44, 17, "Bruno Oliveira Santos | Currículo profissional")
+        canvas.drawRightString(width - 44, 17, str(doc.page))
         canvas.restoreState()
 
     output.parent.mkdir(parents=True, exist_ok=True)
     document = SimpleDocTemplate(
         str(output), pagesize=A4, leftMargin=44, rightMargin=44,
-        topMargin=44, bottomMargin=53,
+        topMargin=32, bottomMargin=36,
     )
     document.build(story, onFirstPage=page_decoration, onLaterPages=page_decoration)
     print(f"PDF gerado: {output}")

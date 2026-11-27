@@ -17,4 +17,15 @@ npm run dev
 
 Abra `http://localhost:3000`.
 
+## Atualizar o currículo
+
+Os dados do PDF ficam em `scripts/resume.json`. Após editá-los, gere novamente o arquivo disponibilizado no site:
+
+```bash
+python -m pip install reportlab
+python scripts/generate-resume.py
+```
+
+O resultado é salvo em `public/curriculo-bruno.pdf`. Mantenha também os textos de `src/data/portfolio.ts` alinhados ao currículo.
+
 [Licença MIT](LICENSE).
